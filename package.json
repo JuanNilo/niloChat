@@ -5,7 +5,6 @@
     "build": "remix build",
     "dev": "remix dev",
     "typecheck": "tsc",
-    "start": "remix-serve build",
     "generate:types": "npx supabase gen types typescript --project-id wiiuypewltvlnvxzxdaz > ./app/types/database.ts"
   },
   "dependencies": {
