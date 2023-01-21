@@ -11,10 +11,7 @@ export function RealTimeMessages({
     const [messages, setMessages] = useState<Message[]>(serverMessages)
     const supabase = useSupabase()
 
-    useEffect(()=>{
-        setMessages(serverMessages)
-    },[serverMessages])
-
+    
     useEffect(() => {
         const channel = supabase
         .channel('*')
@@ -34,7 +31,7 @@ export function RealTimeMessages({
             // } 
         })
         .subscribe()
-        
+
         return () => {supabase.removeChannel(channel)}
     },[supabase])
     return(
