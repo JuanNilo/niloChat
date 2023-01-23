@@ -5,6 +5,8 @@ import { Login } from '~/components/Login'
 import {json} from '@remix-run/node'
 import { Form } from '@remix-run/react'
 import { RealTimeMessages } from '~/components/RealTimeMessages'
+import styles from '../styles/menu.module.css'
+
 
 export const loader = async ({request}: LoaderArgs) => {
   const response = new Response()
@@ -31,16 +33,21 @@ export default function Index() {
   const {messages} = useLoaderData<typeof loader>()
 
   return (
-    <main>
-      <h1>Chat 🦆🦆🦆</h1>
+    <main >
+      <h1 style={{textAlign:'center'}}>Chat 🦆🦆🦆</h1>
       <Login />
-      <Form method="post">
-        <input type="text" name='message' />
-        <button type='submit'>Enviar Mensaje</button>
-      </Form>
-
-      <p>Mensajes:</p>
-      <RealTimeMessages serverMessages={messages}/>
+      <div style={{width:'500px', maxHeight:"600px", overflow:'auto', background:"#333", borderRadius:'15px', padding:'10px', display:'grid',margin:'0 auto', marginTop:'30px'}}>
+        <p>Mensajes:</p>
+        <RealTimeMessages serverMessages={messages}/>
+      </div>
+      <div style={{marginTop:"20px",display:'flex', justifyContent:'center'}}>
+        <Form method="post" 
+          style={{display:'grid', gap:"10px"}}>
+          <input type="text" autoComplete='off' placeholder='Escriba aca su mensaje...' name='message' 
+            style={{ padding:'10px',height:'50px',width:'300px', border:'none', borderRadius:"5px"}} />
+          <button className='btn' type='submit'>Enviar Mensaje</button>
+        </Form>
+      </div>
     </main>
     )
 }

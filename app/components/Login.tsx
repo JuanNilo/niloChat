@@ -14,9 +14,11 @@ export function Login(){
         if(error) console.log('Error al cerrar sesion 🤕', error)
     }
     return(
-    <div style={{display: 'flex', gap: '12px'}}>
-        <button onClick={handleLogout}>Cerrar sesion</button>
-        <button onClick={handleLogin}>Iniciar sesion</button>
+    <div className="containerLogin">
+        <div>
+            <button className="btn login" onClick={handleLogin}>Iniciar sesion</button>
+            <button className="btn login" style={{background:'red'}} onClick={handleLogout}>Cerrar sesion</button>
+        </div>
     </div>
     )
 }
